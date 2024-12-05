@@ -26,6 +26,7 @@ def locatePeaks(arr):
         if abs(arr[x]) > 0.65*norm: peaks.append(x)
     return peaks
 
+
 # Reads in audio sample of length RECORD_SECONDS into a .wav file
 # Returns: sample rate and audio data as a tuple
 def generateAudioSample():
@@ -52,6 +53,7 @@ def generateAudioSample():
         p.terminate()
 
         return wavfile.read("output.wav")
+
 
 # Input: tuple containing sample rate and data collected from .wav file
 # Output: tuple containing time values and frequency data of FFT of input
@@ -86,6 +88,7 @@ def performFFT(info):
     plt.close()
 
     return t, SMag
+
 
 # Input: data from .wav audio file, read using SciPy
 # Output: color-mapped spectrogram
@@ -126,6 +129,7 @@ def createSpectrogram(info, pictureTitle="", colormap='viridis'):
     plt.show()
     plt.close()
 
+
 np.seterr(divide='ignore')
 # performFFT(generateAudioSample())
 
@@ -142,6 +146,8 @@ colors = ['viridis', 'plasma', 'inferno', 'magma', 'cividis',
           'turbo', 'nipy_spectral', 'gist_ncar']
 colorError = "Colormap does not exist. Call 'python spectrogram.py -h' or 'python spectrogram.py --help' for options."
 
+
+# takes in command line inputs
 if (len(sys.argv) == 1): createSpectrogram(generateAudioSample())
 else:
     if len(sys.argv) == 3:
